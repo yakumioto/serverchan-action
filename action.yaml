@@ -1,5 +1,9 @@
 name: 'Server Chan'
 description: 'Use serverchan in github action'
+author: Mioto <yaku.mioto@gmail.com>
+branding:
+  icon: 'alert-octagon'
+  color: 'gray-dark'
 inputs:
   key:
     description: Secret key
