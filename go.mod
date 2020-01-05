@@ -1,3 +1,3 @@
-module github.com/yakumioto/serverchan-actions
+module github.com/yakumioto/serverchan-action
 
 go 1.13
