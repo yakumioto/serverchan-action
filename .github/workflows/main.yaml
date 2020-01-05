@@ -1,0 +1,23 @@
+---
+name: serverchan-action
+
+on: [push]
+
+jobs:
+  build:
+    name: Build test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v1
+      - uses: actions/checkout@v2
+      - run: go build -v .
+  integration:
+    name: Integration test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sending message
+        uses: ./
+        with:
+          key: ${{ secrets.sckey }}
+          text: serverchan-actions integration test

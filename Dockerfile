@@ -15,6 +15,6 @@ RUN apk update && \
 
 WORKDIR /drone/src
 
-COPY /app/serverchan /usr/local/bin/serverchan
+COPY --from=builder /app/serverchan /usr/local/bin/serverchan
 
 ENTRYPOINT ["serverchan"]
