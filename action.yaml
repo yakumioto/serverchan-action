@@ -1,0 +1,18 @@
+name: 'Server Chan'
+description: 'Use serverchan in github action'
+inputs:
+  key:
+    description: Secret key
+    required: true
+  text:
+    description: Message title
+    required: true
+  desp:
+    description: Message content
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.key }}
+    - ${{ inputs.text }}
+    - ${{ inputs.desp }}
