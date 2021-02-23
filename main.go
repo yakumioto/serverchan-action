@@ -6,25 +6,20 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"strings"
 )
 
 func main() {
 	key := os.Getenv("INPUT_KEY")
-	text := os.Getenv("INPUT_TEXT")
+	title := os.Getenv("INPUT_TITLE")
 	desp := os.Getenv("INPUT_DESP")
 
-	if key == "" || text == "" {
-		log.Fatalln("key or text is required")
+	if key == "" || title == "" {
+		log.Fatalln("key or title is required")
 	}
 
-	reqMsg := &url.Values{
-		"text": []string{text},
-		"desp": []string{desp},
-	}
-
-	reqURL := fmt.Sprintf("https://sc.ftqq.com/%s.send", key)
-	res, err := http.Post(reqURL, "application/x-www-form-urlencoded", strings.NewReader(reqMsg.Encode()))
+	reqURL := fmt.Sprintf("https://sctapi.ftqq.com/%s.send", key)
+	res, err := http.PostForm(reqURL, url.Values{"title": {title}, "desp": {desp}})
+	
 	if err != nil {
 		log.Fatalln("post error:", err)
 	}

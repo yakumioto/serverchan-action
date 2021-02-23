@@ -25,7 +25,7 @@ jobs:
         uses: yakumioto/serverchan-action@v1
         with:
           key: {SCKEY}
-          text: {消息标题}
+          title: {消息标题}
           desp: {消息内容 支持MarkDown}
 ```
 
@@ -46,6 +46,6 @@ jobs:
         uses: yakumioto/serverchan-action@v1
         with:
           key: ${{ secrets.sckey }}
-          text: {消息标题}
+          title: {消息标题}
           desp: {消息内容 支持MarkDown}
 ```
