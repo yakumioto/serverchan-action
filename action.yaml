@@ -1,6 +1,6 @@
-name: 'ServerChan Notify'
+name: 'ServerChan Turbo Notify'
 description: 'Use server chan in github action'
-author: Mioto <yaku.mioto@gmail.com>
+author: LiuPeixin <fengyi.mail@gmail.com>
 branding:
   icon: 'message-circle'
   color: 'blue'
