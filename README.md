@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sending message
-        uses: yakumioto/serverchan-action@v1
+        uses: peixin/serverchan-action@v2.1
         with:
           key: {SCKEY}
           title: {消息标题}
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sending message
-        uses: yakumioto/serverchan-action@v1
+        uses: peixin/serverchan-action@v2.1
         with:
           key: ${{ secrets.sckey }}
           title: {消息标题}
