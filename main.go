@@ -6,25 +6,28 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"strings"
 )
 
 func main() {
 	key := os.Getenv("INPUT_KEY")
-	text := os.Getenv("INPUT_TEXT")
+	title := os.Getenv("INPUT_TEXT")
 	desp := os.Getenv("INPUT_DESP")
+	openid := os.Getenv("INPUT_OPENID")
 
-	if key == "" || text == "" {
-		log.Fatalln("key or text is required")
+	if key == "" || title == "" {
+		log.Fatalln("key or title[text] is required")
 	}
 
-	reqMsg := &url.Values{
-		"text": []string{text},
+	if len(title) > 32 {
+		log.Fatalln("title[text] is longer than 32 characters")
+	}
+
+	reqURL := fmt.Sprintf("https://sctapi.ftqq.com/%s.send", key)
+	res, err := http.PostForm(reqURL, url.Values{
+		"title": []string{title},
 		"desp": []string{desp},
-	}
-
-	reqURL := fmt.Sprintf("https://sc.ftqq.com/%s.send", key)
-	res, err := http.Post(reqURL, "application/x-www-form-urlencoded", strings.NewReader(reqMsg.Encode()))
+		"openid": []string{openid},
+	})
 	if err != nil {
 		log.Fatalln("post error:", err)
 	}
